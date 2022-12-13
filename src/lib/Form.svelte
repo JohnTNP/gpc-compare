@@ -11,38 +11,58 @@
     version2,
     currentPage,
   } from "../scripts/store";
+
+  const submitInput = () => {
+    var isInputMissed = $fileName1 == "" || $fileName2 == "";
+    /*||
+      $version1 == "" ||
+      $version2 == "" ||
+      $designername == "" ||
+      $checkername == ""*/
+    if (isInputMissed) {
+      alert("Please Enter the Correct Input");
+      return 0;
+    }
+    currentPage.update(() => {
+      return 1;
+    });
+  };
 </script>
 
 <main>
-  <div style="float: center; ">
-    <button
-      type="button"
-      class="choose"
-      on:click={() => {
-        openGPCFile().then((data) => {
-          fileName1.update(() => {
-            return data;
+  <div class="openFile-container">
+    <div class="button-container">
+      <button
+        type="button"
+        class="choose"
+        on:click={() => {
+          openGPCFile().then((data) => {
+            fileName1.update(() => {
+              return data;
+            });
           });
-        });
-      }}
-    >
-      Open File 1
-    </button>
-    <p>{$fileName1.split("\\").slice(-1)}</p>
-    <button
-      type="button"
-      class="choose"
-      on:click={() => {
-        openGPCFile().then((data) => {
-          fileName2.update(() => {
-            return data;
+        }}
+      >
+        Open File 1
+      </button>
+      <p>{$fileName1.split("\\").slice(-1)}</p>
+    </div>
+    <div class="button-container">
+      <button
+        type="button"
+        class="choose"
+        on:click={() => {
+          openGPCFile().then((data) => {
+            fileName2.update(() => {
+              return data;
+            });
           });
-        });
-      }}
-    >
-      Open File 2
-    </button>
-    <p>{$fileName2.split("\\").slice(-1)}</p>
+        }}
+      >
+        Open File 2
+      </button>
+      <p>{$fileName2.split("\\").slice(-1)}</p>
+    </div>
   </div>
   <div class="row">
     <div class="col-75">
@@ -91,9 +111,7 @@
             value="Submit"
             class="submit-btn"
             on:click={() => {
-              currentPage.update(() => {
-                return 1;
-              });
+              submitInput();
             }}
           />
         </form>
@@ -108,35 +126,43 @@
   }
   main {
     text-align: center;
-    padding: 8px;
+  }
+  .openFile-container {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
   }
   button {
     background-color: #007993;
     color: white;
     border: none;
+    border-radius: 3px;
     padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     cursor: pointer;
-    transition: opacity 0.2s;
+    width: 10rem;
+    transition: 0.2s;
   }
   button:hover {
     opacity: 0.8;
+    width: 10.5rem;
   }
   .submit-btn {
     background-color: #007993;
     color: white;
     padding: 12px;
     margin: 10px 0;
+    margin-top: 2rem;
     border: none;
     width: 20rem;
-    border-radius: 5px;
     cursor: pointer;
     font-size: 17px;
     transition: 0.2s;
+    border-radius: 3px;
   }
   .submit-btn:hover {
     opacity: 0.8;
+    width: 21rem;
   }
   .row {
     display: -ms-flexbox;
@@ -165,5 +191,13 @@
     width: 100%;
     margin-bottom: 10px;
     padding: 12px;
+    background: #ebf7f8;
+    border-radius: 3px;
+  }
+  input[type="text"]:hover {
+    background: #d1fff2;
+  }
+  input[type="text"]:focus {
+    background: #d1fff2;
   }
 </style>

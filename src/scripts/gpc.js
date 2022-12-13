@@ -18,7 +18,7 @@ export const openGPCFile = async () => {
         return fileName
     } catch (error) {
         console.log(error)
-        return false
+        return false;
     }
 }
 

@@ -9,12 +9,14 @@
 
 <style>
   main {
-    padding: 0 0 0 1rem;
+    padding: 0;
+    max-width: 80rem;
+    margin: 0 auto;
   }
   .glow {
     user-select: none;
-    font-size: 5rem;
-    color: #0794a7;
+    font-size: 4rem;
+    color: #000028;
     text-align: center;
   }
 </style>

@@ -17,33 +17,33 @@
     href="#"
     on:click={() => {
       goToPage(0);
-    }}><i class="fa fa-fw fa-home" /> Home</a
+    }}><i class="fa fa-fw fa-home" />Home</a
   >
   <a
     href="#"
     on:click={() => {
       goToPage(1);
-    }}><i class="fa fa-fw fa-arrow-circle-up" /> Updated Items</a
+    }}><i class="fa fa-fw fa-arrow-circle-up" />Updated Items</a
   >
   <a
     href="#"
     on:click={() => {
       goToPage(2);
-    }}><i class="fa fa-fw fa-trash-o" /> Deleted Items</a
+    }}><i class="fa fa-fw fa-trash-o" />Deleted Items</a
   >
   <a
     href="#"
     on:click={() => {
       goToPage(3);
-    }}><i class="fa fa-fw fa-plus" /> Inserted Items</a
+    }}><i class="fa fa-fw fa-plus" />Inserted Items</a
   >
   <a
     href="#"
     on:click={() => {
       goToPage(4);
-    }}><i class="fa fa-fw fa-square" /> Show All</a
+    }}><i class="fa fa-fw fa-square" />Show All</a
   >
-  <a href="#"><i class="fa fa-fw fa-print" /> Print</a>
+  <a href="#"><i class="fa fa-fw fa-print" />Print</a>
 </div>
 
 <style>
@@ -67,5 +67,8 @@
   .navbar a:hover {
     background-color: rgb(0, 190, 220);
     transition-duration: 0.5s;
+  }
+  i {
+    font-size: 1.5rem;
   }
 </style>
