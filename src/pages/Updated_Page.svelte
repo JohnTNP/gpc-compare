@@ -24,13 +24,11 @@
           return (value = data2);
         });
         _Compare.update((value) => {
+          isCompareReady = true;
           return (value = new Compare($insertData1, $insertData2));
         });
       });
     });
-    setTimeout(() => {
-      isCompareReady = true;
-    }, 1000);
   });
 </script>
 

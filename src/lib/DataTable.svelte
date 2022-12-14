@@ -25,19 +25,24 @@
           </tr>
         </thead>
         {#each $insertData1 as data1, index0}
-          {#each data1.bits as bit, index1}
-            <tr>
-              {#if index1 == 0}
-                <td rowspan={data1.bits.length}>{data1.name}</td>
-              {/if}
-              <td
-                class={$_Compare.greenObjs[index0].greenBits.includes(bit)
-                  ? "deleted"
-                  : ""}>{bit}</td
-              >
-              <td>{data1.mnemonics[index1]}</td>
-            </tr>
-          {/each}
+          {#if !$_Compare.greenInserts.some((d) => d === data1.name) && !$_Compare.greenObjs[index0].greenBits.length == 0}
+            {#each data1.bits as bit, index1}
+              <tr>
+                {#if index1 == 0}
+                  <td rowspan={data1.bits.length}>{data1.name}</td>
+                {/if}
+                <td
+                  class={$_Compare.greenObjs[index0].greenBits.includes(bit) &&
+                  $_Compare.greenObjs[index0].greenMnes.includes(
+                    data1.mnemonics[index1]
+                  )
+                    ? "deleted"
+                    : ""}>{bit}</td
+                >
+                <td>{data1.mnemonics[index1]}</td>
+              </tr>
+            {/each}
+          {/if}
         {/each}
       </table>
     </div>
@@ -55,19 +60,31 @@
           </tr>
         </thead>
         {#each $insertData2 as data2, index0}
-          {#each data2.bits as bit, index1}
-            <tr>
-              {#if index1 == 0}
-                <td rowspan={data2.bits.length}>{data2.name}</td>
-              {/if}
-              <td
-                class={$_Compare.redObjs[index0].redBits.includes(bit) == 0
-                  ? ""
-                  : "inserted"}>{bit}</td
-              >
-              <td>{data2.mnemonics[index1]}</td>
-            </tr>
-          {/each}
+          {#if !$_Compare.redInserts.some((d) => d === data2.name) && !$_Compare.redObjs[index0].redBits.length == 0}
+            {#each data2.bits as bit, index1}
+              <tr>
+                {#if index1 == 0}
+                  <td rowspan={data2.bits.length}>{data2.name}</td>
+                {/if}
+                <td
+                  class={$_Compare.redObjs[index0].redBits.includes(bit) &&
+                  $_Compare.redObjs[index0].redMnes.includes(
+                    data2.mnemonics[index1]
+                  )
+                    ? "inserted"
+                    : ""}>{bit}</td
+                >
+                <td
+                  class={$_Compare.redObjs[index0].redBits.includes(bit) &&
+                  $_Compare.redObjs[index0].redMnes.includes(
+                    data2.mnemonics[index1]
+                  )
+                    ? "inserted"
+                    : ""}>{data2.mnemonics[index1]}</td
+                >
+              </tr>
+            {/each}
+          {/if}
         {/each}
       </table>
     </div>
